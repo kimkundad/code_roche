@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'Helveltica';
+    src: url('../fonts/helva/DB Helvethaica X v3.2.ttf');
+    /* src: url('../fonts/thaisans/thaisansneue-regular.eot');
+    src: url('../fonts/thaisans/thaisansneue-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/thaisans/thaisansneue-regular.woff2') format('woff2'),
+         url('../fonts/thaisans/thaisansneue-regular.woff') format('woff'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
+.circleBase {
+    border-radius: 50%;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    background: #e1e1e1;
+    text-align: center;
+    color: white;
+}
+
+.active {
+    background: #B1CEE6;
+    color: black;
+}
+
+.row-step {
+    width: 220px;
+    margin: auto;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Helveltica';
+}
+
+h5,
+h1 {
+    text-align: left;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+h5 {
+    font-size: 25px
+}
+
+.btn,
+.label,
+.form-control {
+    font-size: 25px
+}
+
+.hidden {
+    display: none;
+}
+
+embed {
+    min-height: 440px;
+}
+
+.text-error {
+    color: #bf0000;
+    font-weight: bold;
+}
+
+.image-card {
+    width: 350px;
+}
+
+.image-logo {
+    width: 150px;
+}
+
+.image-headline2 {
+    max-width: 55%;
+}
+
+.image-headline1 {
+    max-width: 550px;
+}
+
+input.btn-primary {
+    min-width: 145px;
+}
+
+.bg-blue {
+    background-image: url('../img/bg-blue.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+select,
+.custom-radio {
+    cursor: pointer;
+}
+
+.custom-control-description {
+    font-size: 1.5em;
+    margin-top: -5px;
+}
+
+.custom-control-indicator {
+    background-color: #fff;
+}
+
+.custom-control-input:checked~.custom-control-indicator {
+    background-color: #000000;
+}
+
+.pie-sheet {
+    padding: 20px 0;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    max-width: 85%;
+}
+
+@media screen and (max-width: 768px) {
+    .image-headline2 {
+        max-width: 80%;
+    }
+    .image-headline1 {
+        max-width: 100%;
+    }
+}

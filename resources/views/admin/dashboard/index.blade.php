@@ -1,0 +1,190 @@
+
+@extends('admin.layouts.template')
+@section('admin.content')
+
+<style type="text/css">
+.select2-container .select2-choice {
+        display: block;
+        height: 35px;
+    }
+    .dataTables_wrapper .dataTables_length .select2-container {
+        margin-right: 10px;
+        width: 85px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+         margin-left: 0em;
+         display: block;
+width: 99%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+    .dataTables_wrapper .dataTables_filter label {
+       width: 100%;
+       float: left;
+    }
+    .panel-body {
+padding: 10px;
+}
+table.dataTable.nowrap th, table.dataTable.nowrap td {
+white-space: normal;
+}
+.widget-summary .summary .title {
+    margin: 0;
+    font-size: 16px;
+    font-size: 1.2rem;
+    line-height: 22px;
+    line-height: 2.2rem;
+    color: #333333;
+    font-weight: 500;
+}
+.bg-quaternary {
+    background: #734BA9;
+    color: #FFF;
+}
+.panel-featured-quaternary {
+    border-color: #734BA9;
+}
+</style>
+
+	<?php
+
+	            function DateThai($strDate)
+	            {
+	            $strYear = date("Y",strtotime($strDate))+543;
+	            $strMonth= date("n",strtotime($strDate));
+	            $strDay= date("j",strtotime($strDate));
+	            $strHour= date("H",strtotime($strDate));
+	            $strMinute= date("i",strtotime($strDate));
+	            $strSeconds= date("s",strtotime($strDate));
+	            $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+	            $strMonthThai=$strMonthCut[$strMonth];
+	            return "$strDay $strMonthThai $strYear $strHour:$strMinute.น";
+	            }
+
+	             ?>
+
+				<section role="main" class="content-body">
+
+
+					<!-- start: page -->
+
+
+
+					<div class="row">
+
+
+            <div class="col-md-6">
+
+              <section class="panel">
+								<header class="panel-heading panel-heading-transparent">
+
+
+									<h2 class="panel-title">Dashboard Stats</h2>
+								</header>
+								<div class="panel-body" style="font-size: 14px;">
+									<div class="table-responsive" >
+										<table class="table table-striped mb-none">
+											<thead>
+												<tr>
+
+													<th>Project</th>
+													<th>Total</th>
+
+												</tr>
+											</thead>
+											<tbody>
+
+												<tr>
+													
+												</tr>
+
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</section>
+
+            </div>
+
+
+
+
+
+
+
+
+											</div>
+
+
+
+
+
+
+
+
+</section>
+@stop
+
+@section('scripts')
+
+<script src="{{url('assets/vendor/flot/jquery.flot.js')}}"></script>
+<script src="{{url('assets/vendor/flot/jquery.flot.pie.js')}}"></script>
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url: '{{url('api/get_chart')}}', // getchart.php
+        dataType: 'JSON',
+        type: 'GET',
+       // dataType: 'jsonp',
+        data: {
+        	id: "4",
+              },
+        success: function(response) {
+
+
+
+		var plot = $.plot('#flotPie', response, {
+			series: {
+				pie: {
+					show: true,
+					combine: {
+						color: '#999',
+						threshold: 0.1
+					}
+				}
+			},
+			legend: {
+				show: false
+			},
+			grid: {
+				hoverable: true,
+				clickable: true
+			}
+		});
+
+
+}
+    });
+
+});
+</script>
+
+
+
+@stop('scripts')
