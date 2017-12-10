@@ -112,23 +112,30 @@
                                 </h5>
                             </div>
                         </div>
+                        <form class="form-horizontal" action="{{url('user_regis_search')}}" method="GET" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-12">
-                                <input type="text" class="txt-confirm-selft w-100" name="user_id" id="txt_confirm_selft" >
+                                 
+                                <input type="text" class="txt-confirm-selft w-100" name="q" placeholder="Search..." id="txt_confirm_selft" >
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="text-error label hidden" >
+                                @if ($message = Session::get('no_item'))
+                                <p class="text-error label " >
                                     ไม่พบรหัสพนักงาน
                                 </p>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="#" id="btn_start" class="btn btn-primary btn-start">เริ่มทำแบบทดสอบ</a>
+                                <button type="submit" id="btn_start" class="btn btn-primary btn-start">เริ่มทำแบบทดสอบ</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-6">

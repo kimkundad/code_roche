@@ -128,12 +128,14 @@
                 <table id="example" class="table table-striped " cellspacing="0" width="100%">
                   <thead>
                     <tr>
+                      <th>CHRIS No.</th>
                       <th>Emp.No.</th>
                       <th>ชื่อ-นามสกุล</th>
                       
                       <th>Position</th>
                       <th>Department</th>
                       <th>Age</th>
+                      <th>Birthday</th>
                       <th>จัดการ</th>
                     </tr>
                   </thead>
@@ -142,12 +144,14 @@
                 @foreach($objs as $u)
                     <tr>
                       
-
+                      <td>{{$u->chris}}</td>
                       <td>{{$u->emp_no}}</td>
                       <td>{{$u->title}} {{$u->name}} {{$u->surname}}</td>
                       <td>{{$u->position}}</td>
                       <td>{{$u->department}}</td>
                       <td>{{$u->age}}</td>
+                      <td>{{$u->birthday}}</td>
+                      
 
                       <td>
 

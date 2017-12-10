@@ -15,11 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('user_regis_search', 'User_regisController@user_regis_search');
+Route::post('user_regis_update', 'User_regisController@user_regis_update');
+Route::post('image-crop', 'User_regisController@imageCropPost');
+Route::get('step-4/{id}', 'User_regisController@get_data');
+Route::post('api/get_chart', 'User_regisController@get_chart');
 
 Route::group(['middleware' => 'admin'], function() {
 
