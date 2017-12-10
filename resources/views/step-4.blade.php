@@ -132,19 +132,6 @@
             <br>
             <div class="row">
                 <div class="col-md-12 ">
-                    <div class="box-my-name">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="{{url('assets/images/avatar/'.$objs->avatar)}}" width="100%" alt="">
-                            </div>
-                            <div class="col-md-8 d-flex">
-                                <div class="box-fulname">
-                                    <h1>{{$objs->title}}{{$objs->name}}</h1>
-                                    <h2>{{$objs->surname}}</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="box-my-generations">
                         <div class="text-center">
                             <div class="row">
@@ -166,12 +153,27 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="box-my-name">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{url('assets/images/avatar/'.$objs->avatar)}}" width="100%" alt="">
+                            </div>
+                            <div class="col-md-8 d-flex">
+                                <div class="box-fulname">
+                                    <h1>{{$objs->title}}{{$objs->name}}</h1>
+                                    <h2>{{$objs->surname}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade swal-overlay" id="myModal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
             
             <div class="modal-content">
@@ -186,7 +188,7 @@
     <script src="{{url('front/asset/libs/bootstrap4/js/bootstrap.min.js')}}"></script>
 
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{url('assets/vendor/flot/jquery.flot.js')}}"></script>
     <script src="{{url('assets/vendor/flot/jquery.flot.pie.js')}}"></script>
     <script>

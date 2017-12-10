@@ -277,9 +277,9 @@ class User_regisController extends Controller
               
 
 
-                $arr[0] = [ 'label' => 'gen b', 'data' =>[[1, $objs->gen_b]],'color' => '#0088cc' ];
-                $arr[1] = [ 'label' => 'gen x', 'data' =>[[1, $objs->gen_x]],'color' => '#2baab1' ];
-                $arr[2] = [ 'label' => 'gen y', 'data' =>[[1, $objs->gen_y]],'color' => '#E36159' ];
+                $arr[0] = [ 'label' => 'Gen B', 'data' =>[[1, $objs->gen_b]],'color' => '#0088cc' ];
+                $arr[1] = [ 'label' => 'Gen X', 'data' =>[[1, $objs->gen_x]],'color' => '#2baab1' ];
+                $arr[2] = [ 'label' => 'Gen Y', 'data' =>[[1, $objs->gen_y]],'color' => '#E36159' ];
              
 
               return response()->json($arr);

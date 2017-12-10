@@ -234,7 +234,7 @@ $('.upload-result').on('click', function (ev) {
 
                 if(data.success == 'done'){
 
-        swal("Success!", "Change avatar image success!", "success");
+        swal("Success!", "อัพโหลดภาพเสร็จโดยสมบูรณ์!", "success");
         var delayMillis = 3000;
         setTimeout(function() {
           window.location = "{{url('step-4/'.$objs->id)}}";
@@ -242,7 +242,7 @@ $('.upload-result').on('click', function (ev) {
 
                 }else{
 
-                    swal ( "Oops" ,  "Something went wrong!" ,  "error" );
+                    swal ( "Oops" ,  "กรุณาอัพโหลดรูปภาพ!" ,  "error" );
 
                 }
                 
