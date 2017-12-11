@@ -339,6 +339,43 @@ return response()->download($tempImage, $get_image->avatar);
     }
 
 
+    public function image_crop_new(Request $request)
+    {
+
+      $this->validate($request, [
+         'image' => 'required'
+     ]);
+
+      $image = $request->file('image');
+      $user_id = $request->user_id;
+      $id = $user_id;
+
+      $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+      $img = Image::make($image->getRealPath());
+      $img->resize(750, 750, function ($constraint) {
+      $constraint->aspectRatio();
+    })->save('assets/images/avatar/'.$input['imagename']);
+
+        $package = staff::find($id);
+        $package->avatar = $input['imagename'];
+        $package->status = 1;
+        $package->save();
+
+        $get_image = DB::table('staff')
+              ->select(
+              'staff.*'
+              )
+              ->Where('id', $id)
+              ->first();
+
+      $data['objs'] = $get_image;
+
+      return view('step-4', $data);
+
+    }
+
+
     public function imageCropPost(Request $request)
     {
 

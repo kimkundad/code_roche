@@ -28,6 +28,8 @@ Route::post('image-crop', 'User_regisController@imageCropPost');
 Route::get('step-4/{id}', 'User_regisController@get_data');
 Route::post('api/get_chart', 'User_regisController@get_chart');
 
+Route::post('image_crop_new', 'User_regisController@image_crop_new');
+
 Route::group(['middleware' => 'admin'], function() {
   Route::get('/admin/user_export', 'User_regisController@user_export');
 

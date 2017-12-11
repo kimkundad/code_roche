@@ -27,7 +27,7 @@
         }
 
         .box-my-name img {
-            border-radius: 100%;
+           /* border-radius: 100%; */
         }
 
         .box-my-name h2 {

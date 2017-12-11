@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{{url('front/asset/libs/bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('front/asset/styles/main.css')}}" rel="stylesheet">
-
+    <link href="{{url('assets/croppie/croppie.css')}}" rel="stylesheet" type="text/css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .box-upload-file {
@@ -100,10 +100,8 @@
             </div>
             </div>
             <div class="row">
-
-
-
-                <div class="box-upload-file">
+                <div class="col-md-12 ">
+                    <div class="box-upload-file">
                         <div class="text-center">
                             <div class="row">
                                 <div class="col-md-12">
@@ -120,21 +118,40 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <label for="imgAvatar"></label>
-                                    <img width="150" id="imgAvatar" name="imgAvatar" src="{{url('front/asset/img/thumb_upload.png')}}" width="250px" alt="">
-                                </div>
-                            </div>
+                                <div class="col-md-12 text-center" style="padding-right: 0px; padding-left: 0px;">
+                                    
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                          <div id="upload-demo" ></div>
+                                                         
+                                                      </div>
 
-                            <form action="{{url('image_crop_new')}}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+
+                                </div>
+                                
+                                        
+                                                  
+                                            
+                                                 
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="file-upload btn">
-                                        <span>เลือกรูปภาพ</span>
-                                        <input class="upload" id="fileAvatar" name="image" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|images/*">
-                                        <input type="hidden" class="form-control" name="user_id" value="{{$objs->id}}" required>
+                                        <form enctype="multipart/form-data">
+                                                          <div>
+                                                              <span class=" default btn-file">
+                                                                  <span class="fileinput-new"> เลือกรูปภาพ </span>
+                                                                 
+                                                                  
+                            <input type="file" class="upload" id="upload" name="image" accept="image/*" > </span>
+                                                             
+                                                          </div>
+                                                           </form>
                                     </div>
+
+
+                                     
+
+
                                 </div>
                             </div>
                             <div class="row">
@@ -146,16 +163,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="btn btn-primary" id="btn_submit" value="ยืนยัน" type="submit">
+                                    <input class="btn btn-primary upload-result" id="btn_submit" value="ยืนยัน" type="submit">
                                 </div>
                             </div>
-
-                            </form>
-
-
-
                         </div>
                     </div>
+                </div>
 
             </div>
         </div>
@@ -166,33 +179,79 @@
     <script src="{{url('front/asset/libs/popper/popper.min.js')}}"></script>
     <script src="{{url('front/asset/libs/bootstrap4/js/bootstrap.min.js')}}"></script>
 
-
+    <script src="{{url('assets/croppie/croppie.js')}}" type="text/javascript"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $("#fileAvatar").on("change", previewFile);
-            $('#btn_submit').click(() => {
-                const file = document.querySelector('#fileAvatar').files[0];
-                if (file) {
-                    window.location = 'step-4.html';
-                }
-            });
+<script type="text/javascript">
+
+
+$.ajaxSetup({
+headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 250,
+        height: 250,
+        type: 'square'
+    },
+    boundary: {
+        width: 280,
+        height: 280
+    }
+});
+
+$('#upload').on('change', function () {
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function(){
+            console.log('jQuery bind complete');
         });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
 
-        function previewFile() {
-            const file = document.querySelector('#fileAvatar').files[0];
-            const preview = document.querySelector('#imgAvatar');
-            const reader = new FileReader();
 
-            reader.onloadend = function () {
-                preview.src = reader.result;
+
+
+$('.upload-result').on('click', function (ev) {
+
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $.ajax({
+            url: "{{url('image-crop')}}",
+            type: "POST",
+            data: {"image":resp,"user_id":{{$objs->id}}},
+            success: function (data) {
+
+                if(data.success == 'done'){
+
+        swal("Success!", "อัพโหลดภาพเสร็จโดยสมบูรณ์!", "success");
+        var delayMillis = 3000;
+        setTimeout(function() {
+          window.location = "{{url('step-4/'.$objs->id)}}";
+        }, delayMillis);
+
+                }else{
+
+                    swal ( "Oops" ,  "กรุณาอัพโหลดรูปภาพ!" ,  "error" );
+
+                }
+                
             }
-            if (file) {
-                reader.readAsDataURL(file); //reads the data as a URL
-            }
-        }
-    </script>
+        });
+    });
+});
+
+</script>
 </body>
 
 </html>
