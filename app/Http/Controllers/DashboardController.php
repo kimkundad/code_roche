@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,20 @@ class DashboardController extends Controller
                           ->where('status', 0)
                           ->count();
 
+                        $Mr = "Mr.";
+                        $Mrs = "Mrs.";
+                        $Ms = "Ms.";
 
+    $count_man = staff::where('title', 'like', "%$Mr%")
+      ->count();
+
+
+      $count_girl = staff::where('title', 'like', "%$Mrs%")
+      ->orwhere('title', 'like', "%$Ms%")
+      ->count();
+
+      $data['count_man'] = $count_man;
+      $data['count_girl'] = $count_girl;
       $data['count_all'] = $count_all;
       $data['count_re'] = $count_re;
       $data['count_q'] = $count_q;

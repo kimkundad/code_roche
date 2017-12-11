@@ -107,11 +107,11 @@ white-space: normal;
 											</thead>
 											<tbody>
 
-												<tr>
+											
 
 													<tr>
-													<td><i class="fa fa-user text-danger"></i> จำนวนทั้งหมด</td>
-													<td><span class="label label-danger">{{$count_all}}</span></td>
+													<td><i class="fa fa-user text-muted"></i> จำนวนทั้งหมด</td>
+													<td><b>{{$count_all}}</b></td>
 												</tr>
 
 													<tr>
@@ -123,8 +123,21 @@ white-space: normal;
 													<td><i class="fa fa-user text-primary"></i> จำนวนผู้ยังไม่กรอกแบบสอบถาม</td>
 													<td><span class="label label-primary">{{$count_re}}</span></td>
 												</tr>
-													
+
+
+
+												 <tr>
+													<td><i class="fa fa-child text-danger"></i> จำนวนผู้ชาย</td>
+													<td><span class="label label-danger">{{$count_man}}</span></td>
 												</tr>
+
+
+                        <tr>
+													<td><i class="fa fa-female text-warning"></i> จำนวนผู้หญิง</td>
+													<td><span class="label label-warning">{{$count_girl}}</span></td>
+												</tr>
+													
+												
 
 
 
@@ -135,6 +148,7 @@ white-space: normal;
 							</section>
 
             </div>
+
 
 
 
