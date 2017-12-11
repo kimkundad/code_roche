@@ -152,7 +152,7 @@
                       <td>{{$u->age}}</td>
                       <td>{{$u->birthday}}</td>
                       
-                      @if($u->status == 1)
+                   
                       <td>
 
                         
@@ -440,7 +440,7 @@
 
                       </td>
 
-                      @endif 
+                  
 
 
 
