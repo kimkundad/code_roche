@@ -29,6 +29,9 @@ Route::get('step-4/{id}', 'User_regisController@get_data');
 Route::post('api/get_chart', 'User_regisController@get_chart');
 
 Route::group(['middleware' => 'admin'], function() {
+  Route::get('/admin/user_export', 'User_regisController@user_export');
+
+  Route::get('/admin/user_exported', 'User_regisController@user_exported');
 
   Route::resource('admin/dashboard', 'DashboardController');
   Route::resource('admin/user_regis', 'User_regisController');

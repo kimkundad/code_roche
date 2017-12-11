@@ -24,6 +24,26 @@ class User_regisController extends Controller
       return view('admin.userni.index', $data);
     }
 
+
+    public function user_export(){
+      $objs = staff::all();
+      $objs_count = staff::count();
+      $data['objs'] = $objs;
+      $data['objs_count'] = $objs_count;
+      return view('admin.userni.user_export', $data);
+    }
+
+
+    public function user_exported(){
+      $objs = DB::table('staff')
+                ->where('status', 1)
+                ->get();
+      $objs_count = staff::count();
+      $data['objs'] = $objs;
+      $data['objs_count'] = $objs_count;
+      return view('admin.userni.user_exported', $data);
+    }
+
     public function user_regised(){
 
 

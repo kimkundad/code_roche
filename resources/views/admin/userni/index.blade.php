@@ -94,7 +94,7 @@
                 <div class="row">
                    <div class="col-md-4">
 
-
+<a class="btn btn-default" target="_blank" href="{{url('admin/user_export')}}" role="button"><i class="fa fa-file-excel-o"></i> Export Excel</a>
                      
 
                    </div>
@@ -163,8 +163,8 @@
                          href="#modalSM-{{$u->id}}" role="button"><i class="fa fa-graduation-cap"></i> </a>
 
                          @if($u->status)
-                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" class="btn btn-danger btn-xs modal-sizes"
-                         href="{{url('')}}" role="button"><i class="fa fa-download"></i> </a>
+                        <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" target="_blank" class="btn btn-danger btn-xs"
+                         href="{{url('/admin/load_img/'.$u->id)}}" role="button"><i class="fa fa-download"></i> </a>
                         @endif  
 
 
