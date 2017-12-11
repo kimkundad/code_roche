@@ -47,7 +47,7 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 
 									<li {{ (Request::is('admin/regised*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/regised/')}}" >
-											<i class="fa fa-male" aria-hidden="true"></i>
+											<i class="fa fa-user-secret" aria-hidden="true"></i>
 											<span>จำนวนผู้กรอกแบบสอบถาม</span>
 										</a>
 									</li>

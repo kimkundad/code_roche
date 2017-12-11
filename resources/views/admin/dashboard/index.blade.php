@@ -110,6 +110,11 @@ white-space: normal;
 												<tr>
 
 													<tr>
+													<td><i class="fa fa-user text-danger"></i> จำนวนทั้งหมด</td>
+													<td><span class="label label-danger">{{$count_all}}</span></td>
+												</tr>
+
+													<tr>
 													<td><i class="fa fa-user text-success"></i> จำนวนผู้กรอกแบบสอบถาม</td>
 													<td><span class="label label-success">{{$count_q}}</span></td>
 												</tr>

@@ -73,6 +73,87 @@ class User_regisController extends Controller
     }
 
 
+    public function load_img($id){
+
+
+        $get_image = DB::table('staff')
+              ->select(
+              'staff.*'
+              )
+              ->Where('id', $id)
+              ->first();
+
+$tempImage = tempnam(sys_get_temp_dir(), $get_image->avatar);
+copy('assets/images/avatar/'.$get_image->avatar, $tempImage);
+
+return response()->download($tempImage, $get_image->avatar);
+
+    }
+
+
+
+    public function user_regis_search_admin(Request $request)
+    {
+        $this->validate($request, [
+        'q' => 'required'
+        ]);
+
+        $search = $request->get('q');
+
+        $get_count = DB::table('staff')
+              ->select(
+              'staff.*'
+              )
+              ->where('emp_no', 'like', "%$search%")
+              ->orWhere('name', 'like', "%$search%")
+              ->orWhere('chris', 'like', "%$search%")
+              ->count();
+
+
+
+
+      if($get_count == 0){
+
+        $arr_str=explode(" ",$search);
+
+        $objs = DB::table('staff')
+                ->select(
+                'staff.*'
+                )
+                ->where('emp_no', 'like', "%$arr_str[0]%")
+                ->orWhere('name', 'like', "%$arr_str[0]%")
+                ->orWhere('chris', 'like', "%$arr_str[0]%")
+                ->paginate(15);
+
+      } else{
+
+        $objs = DB::table('staff')
+                ->select(
+                'staff.*'
+                )
+                ->where('emp_no', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('chris', 'like', "%$search%")
+                ->paginate(15);
+
+      }
+
+
+      $data['count'] = $get_count;
+                      $data['objs'] = $objs;
+                      $data['search'] = $search;
+                      $data['datahead'] = "รายชื่อผู้ลงทะเบียน";
+
+
+                      return view('admin.userni.search', $data);
+      
+
+
+
+
+    }
+
+
     public function user_regis_update(Request $request){
 
         $this->validate($request, [

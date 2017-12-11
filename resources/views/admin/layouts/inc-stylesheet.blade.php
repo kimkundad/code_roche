@@ -29,6 +29,20 @@
         <!-- Dropzone -->
 
         <style type="text/css">
+        .ap-questions-featured {
+            margin-left: -10px;
+            border: medium none;
+            color: #ff951e;
+            display: inline;
+            font-size: 16px;
+            height: auto;
+            margin-right: 5px;
+            padding: 0;
+            position: static;
+            vertical-align: baseline;
+            width: auto;
+        }
+
         .select2-container .select2-choice {
                 display: block;
                 height: 35px;

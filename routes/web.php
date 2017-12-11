@@ -33,6 +33,8 @@ Route::group(['middleware' => 'admin'], function() {
   Route::resource('admin/dashboard', 'DashboardController');
   Route::resource('admin/user_regis', 'User_regisController');
   Route::get('admin/regised', 'User_regisController@user_regised');
+  Route::get('admin/user_regis_search_admin', 'User_regisController@user_regis_search_admin');
+  Route::get('admin/load_img/{id}', 'User_regisController@load_img');
 
 
 });

@@ -104,7 +104,7 @@
                      <div class="form-group ">
                        <label class="col-md-4 control-label"></label>
                        <div class="col-md-8">
-                         <form class="form-horizontal" action="{{url('admin/user_regis_search')}}" method="GET" enctype="multipart/form-data">
+                         <form class="form-horizontal" action="{{url('admin/user_regis_search_admin')}}" method="GET" enctype="multipart/form-data">
                            {{ csrf_field() }}
                          <div class="input-group input-search">
                            <input type="text" class="form-control" name="q" placeholder="Search..." required>
@@ -155,16 +155,24 @@
                    
                       <td>
 
-                        
+                        @if($u->status)
+                        <a style="float:left; margin: 3px; margin-top:2px; font-size: 16px; " class=" ap-questions-featured"
+                          role="button"><i class="fa fa-star"></i></a>
+                        @endif  
                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" class="btn btn-primary btn-xs modal-sizes"
                          href="#modalSM-{{$u->id}}" role="button"><i class="fa fa-graduation-cap"></i> </a>
-                        
 
-                          <form  action="{{url('admin/user_regis/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+                         @if($u->status)
+                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" class="btn btn-danger btn-xs modal-sizes"
+                         href="{{url('')}}" role="button"><i class="fa fa-download"></i> </a>
+                        @endif  
+
+
+                      <!--    <form  action="{{url('admin/user_regis/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                             <input type="hidden" name="_method" value="DELETE">
                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="btn btn-danger btn-xs" style="margin: 3px; font-size: 10px;"><i class="fa fa-times "></i></button>
-                          </form>
+                          </form> -->
 
                         
 

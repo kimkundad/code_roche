@@ -21,11 +21,15 @@ class DashboardController extends Controller
                 ->where('status', 1)
                 ->count();
 
+                $count_all = DB::table('staff')
+                ->count();
+
                 $count_re = DB::table('staff')
                           ->where('status', 0)
                           ->count();
 
 
+      $data['count_all'] = $count_all;
       $data['count_re'] = $count_re;
       $data['count_q'] = $count_q;
 
