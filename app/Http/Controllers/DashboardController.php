@@ -17,6 +17,18 @@ class DashboardController extends Controller
     public function index()
     {
 
+         $count_q = DB::table('staff')
+                ->where('status', 1)
+                ->count();
+
+                $count_re = DB::table('staff')
+                          ->where('status', 0)
+                          ->count();
+
+
+      $data['count_re'] = $count_re;
+      $data['count_q'] = $count_q;
+
       $data['header'] = 'รายชื่อผู้ลงทะเบียนเข้างาน';
 
       return view('admin.dashboard.index', $data);

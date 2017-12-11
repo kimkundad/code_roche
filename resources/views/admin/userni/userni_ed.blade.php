@@ -181,7 +181,7 @@
 
 
                           <!-- popup -->
-                    <div id="modalSM-{{$u->id}}" class="modal-block modal-block-mm mfp-hide">
+                           <div id="modalSM-{{$u->id}}" class="modal-block modal-block-mm mfp-hide">
                     <section class="panel">
                     <!--  <form  action="{{url('admin/user_2/post_update')}}" method="post"  > -->
                      <form id="cutproduct1">
@@ -195,7 +195,7 @@
                           <div class="modal-text">
 
 
-                       <div class="form-group" style="margin-bottom: 5px;">
+                        <div class="form-group" style="margin-bottom: 5px;">
                           <label for="inputPassword3" class=" control-label"><b> Gen_B :</b> {{number_format(($u->gen_b/12)*100, 2)}}%</label>
                        </div>
                        <div class="form-group" style="margin-bottom: 5px;">
@@ -443,7 +443,7 @@
                       @endif 
 
 
-
+                      
                     </tr>
                        @endforeach
               @endif

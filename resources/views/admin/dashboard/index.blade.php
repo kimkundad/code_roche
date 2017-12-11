@@ -108,6 +108,16 @@ white-space: normal;
 											<tbody>
 
 												<tr>
+
+													<tr>
+													<td><i class="fa fa-user text-success"></i> จำนวนผู้กรอกแบบสอบถาม</td>
+													<td><span class="label label-success">{{$count_q}}</span></td>
+												</tr>
+
+                        <tr>
+													<td><i class="fa fa-user text-primary"></i> จำนวนผู้ยังไม่กรอกแบบสอบถาม</td>
+													<td><span class="label label-primary">{{$count_re}}</span></td>
+												</tr>
 													
 												</tr>
 

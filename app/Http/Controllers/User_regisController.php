@@ -20,8 +20,20 @@ class User_regisController extends Controller
     {
       $objs = staff::paginate(15);
       $data['objs'] = $objs;
-      $data['datahead'] = "รายชื่อผู้ลงทะเบียน";
+      $data['datahead'] = "Revised#1-Staff Name  List";
       return view('admin.userni.index', $data);
+    }
+
+    public function user_regised(){
+
+
+        $objs = DB::table('staff')
+                ->where('status', 1)
+                ->paginate(15);
+
+      $data['objs'] = $objs;
+      $data['datahead'] = "Revised#1-Staff Name  List";
+      return view('admin.userni.userni_ed', $data);
     }
 
 
@@ -252,6 +264,7 @@ class User_regisController extends Controller
 
         $package = staff::find($id);
         $package->avatar = $image_name;
+        $package->status = 1;
         $package->save();
 
         return response()->json(['success'=>'done']);
