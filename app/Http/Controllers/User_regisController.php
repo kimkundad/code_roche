@@ -69,7 +69,7 @@ class User_regisController extends Controller
               ->select(
               'staff.*'
               )
-              ->Where('emp_no', 'like', "%$search%")
+              ->Where('emp_no',  $search)
               ->count();
         
 
@@ -79,12 +79,18 @@ class User_regisController extends Controller
                 ->select(
                 'staff.*'
                 )
-                ->Where('emp_no', 'like', "%$search%")
+                ->Where('emp_no',  $search)
                 ->first();
          $data['objs'] = $objs;
 
-         //dd($objs);
-        return view('step-2', $data);       
+         if($objs->status == 1){
+          return view('step-4', $data);  
+         }else{
+          return view('step-2', $data);  
+         }
+
+        // dd($objs);
+             
 
       }else{
         return redirect(url('/'))->with('no_item','no data');
