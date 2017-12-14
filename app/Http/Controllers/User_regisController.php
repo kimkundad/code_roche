@@ -71,7 +71,7 @@ class User_regisController extends Controller
               )
               ->Where('emp_no',  $search)
               ->count();
-        
+
 
       if($get_count != 0){
 
@@ -84,13 +84,13 @@ class User_regisController extends Controller
          $data['objs'] = $objs;
 
          if($objs->status == 1){
-          return view('step-4', $data);  
+          return view('step-4', $data);
          }else{
-          return view('step-2', $data);  
+          return view('step-2', $data);
          }
 
         // dd($objs);
-             
+
 
       }else{
         return redirect(url('/'))->with('no_item','no data');
@@ -172,7 +172,71 @@ return response()->download($tempImage, $get_image->avatar);
 
 
                       return view('admin.userni.search', $data);
-      
+
+
+
+
+
+    }
+
+
+
+
+    public function user_regis_search_admin_2(Request $request)
+    {
+        $this->validate($request, [
+        'q' => 'required'
+        ]);
+
+        $search = $request->get('q');
+
+        $get_count = DB::table('staff')
+              ->select(
+              'staff.*'
+              )
+              ->where('emp_no', 'like', "%$search%")
+              ->orWhere('name', 'like', "%$search%")
+              ->orWhere('chris', 'like', "%$search%")
+              ->count();
+
+
+
+
+      if($get_count == 0){
+
+        $arr_str=explode(" ",$search);
+
+        $objs = DB::table('staff')
+                ->select(
+                'staff.*'
+                )
+                ->where('emp_no', 'like', "%$arr_str[0]%")
+                ->orWhere('name', 'like', "%$arr_str[0]%")
+                ->orWhere('chris', 'like', "%$arr_str[0]%")
+                ->paginate(15);
+
+      } else{
+
+        $objs = DB::table('staff')
+                ->select(
+                'staff.*'
+                )
+                ->where('emp_no', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('chris', 'like', "%$search%")
+                ->paginate(15);
+
+      }
+
+
+      $data['count'] = $get_count;
+                      $data['objs'] = $objs;
+                      $data['search'] = $search;
+                      $data['datahead'] = "รายชื่อผู้ลงทะเบียน";
+
+
+                      return view('admin.userni.search_ed', $data);
+
 
 
 
@@ -414,7 +478,7 @@ return response()->download($tempImage, $get_image->avatar);
         return response()->json(['success'=>'done']);
     }
 
-  
+
 
     /**
      * Show the form for creating a new resource.
@@ -431,13 +495,13 @@ return response()->download($tempImage, $get_image->avatar);
                 ->Where('id', $user_id)
                 ->first();
 
-              
+
 
 
                 $arr[0] = [ 'label' => 'Gen B', 'data' =>[[1, $objs->gen_b]],'color' => '#0088cc' ];
                 $arr[1] = [ 'label' => 'Gen X', 'data' =>[[1, $objs->gen_x]],'color' => '#2baab1' ];
                 $arr[2] = [ 'label' => 'Gen Y', 'data' =>[[1, $objs->gen_y]],'color' => '#E36159' ];
-             
+
 
               return response()->json($arr);
     }
@@ -460,7 +524,7 @@ return response()->download($tempImage, $get_image->avatar);
                 //dd($id);
          $data['objs'] = $objs;
 
-   
+
         return view('step-4', $data);
     }
 

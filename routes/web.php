@@ -41,5 +41,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('admin/user_regis_search_admin', 'User_regisController@user_regis_search_admin');
   Route::get('admin/load_img/{id}', 'User_regisController@load_img');
 
+  Route::get('admin/search_user', 'User_regisController@user_regis_search_admin_2');
+
 
 });

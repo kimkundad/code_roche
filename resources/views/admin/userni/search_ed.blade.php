@@ -95,7 +95,7 @@
                    <div class="col-md-4">
 
 
-                     <a class="btn btn-default" target="_blank" href="{{url('admin/user_exported')}}" role="button"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+
 
                    </div>
 
@@ -107,7 +107,7 @@
                          <form class="form-horizontal" action="{{url('admin/search_user')}}" method="GET" enctype="multipart/form-data">
                            {{ csrf_field() }}
                          <div class="input-group input-search">
-                           <input type="text" class="form-control" name="q" placeholder="Search..." required>
+                           <input type="text" class="form-control" name="q" placeholder="Search..." value="{{$search}}" required>
                            <span class="input-group-btn">
                              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                            </span>
@@ -153,7 +153,8 @@
                       <td>{{$u->age}}</td>
                       <td>{{$u->birthday}}</td>
                       <td>{{$u->updated_at}}</td>
-                      @if($u->status == 1)
+
+
                       <td>
 
                         @if($u->status)
@@ -165,13 +166,29 @@
                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" class="btn btn-primary btn-xs modal-sizes"
                          href="#modalSM-{{$u->id}}" role="button"><i class="fa fa-graduation-cap"></i> </a>
 
-                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" target="_blank" class="btn btn-danger btn-xs"
-                         href="{{url('/admin/load_img/'.$u->id)}}" role="button"><i class="fa fa-download"></i> </a>
+
+                          <form  action="{{url('admin/user_regis/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
+                            <input type="hidden" name="_method" value="DELETE">
+                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-danger btn-xs" style="margin: 3px; font-size: 10px;"><i class="fa fa-times "></i></button>
+                          </form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
                           <!-- popup -->
-                           <div id="modalSM-{{$u->id}}" class="modal-block modal-block-mm mfp-hide">
+                    <div id="modalSM-{{$u->id}}" class="modal-block modal-block-mm mfp-hide">
                     <section class="panel">
                     <!--  <form  action="{{url('admin/user_2/post_update')}}" method="post"  > -->
                      <form id="cutproduct1">
@@ -185,7 +202,7 @@
                           <div class="modal-text">
 
 
-                        <div class="form-group" style="margin-bottom: 5px;">
+                       <div class="form-group" style="margin-bottom: 5px;">
                           <label for="inputPassword3" class=" control-label"><b> Gen_B :</b> {{number_format(($u->gen_b/12)*100, 2)}}%</label>
                        </div>
                        <div class="form-group" style="margin-bottom: 5px;">
@@ -430,7 +447,7 @@
 
                       </td>
 
-                      @endif
+
 
 
 
