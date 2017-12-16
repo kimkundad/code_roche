@@ -34,7 +34,7 @@ Route::group(['middleware' => 'admin'], function() {
   Route::get('/admin/user_export', 'User_regisController@user_export');
 
   Route::get('/admin/user_exported', 'User_regisController@user_exported');
-
+  Route::post('api/post_status', 'User_regisController@post_status');
   Route::resource('admin/dashboard', 'DashboardController');
   Route::resource('admin/user_regis', 'User_regisController');
   Route::get('admin/regised', 'User_regisController@user_regised');

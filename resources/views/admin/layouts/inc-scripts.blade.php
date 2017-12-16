@@ -16,9 +16,9 @@
 
 <script src="{{asset('/assets/vendor/isotope/jquery.isotope.js')}}"></script>
 
-<script src="{{asset('/assets/vendor/pnotify/pnotify.custom.js')}}"></script>
-<script src="{{asset('/assets/vendor/magnific-popup/magnific-popup.js')}}"></script>
+<script src="{{asset('/assets/vendor/pnotify/pnotify.custom.js?v2')}}"></script>
 
+<script src="{{asset('/assets/vendor/ios7-switch/ios7-switch.js')}}"></script>
 <!-- Theme Base, Components and Settings -->
 <script src="{{asset('/assets/javascripts/theme.js')}}"></script>
 

@@ -506,6 +506,38 @@ return response()->download($tempImage, $get_image->avatar);
               return response()->json($arr);
     }
 
+
+
+    public function post_status(Request $request){
+
+    /*  $user_id = $request->user_id;
+
+
+      $objs = DB::table('staff')
+              ->select(
+              'staff.*'
+              )
+              ->Where('id', $user_id)
+              ->first(); */
+
+              $user = staff::findOrFail($request->user_id);
+
+              if($user->ch_status == 1){
+                  $user->ch_status = 0;
+              } else {
+                  $user->ch_status = 1;
+              }
+
+
+      return response()->json([
+      'data' => [
+        'success' => $user->save(),
+      ]
+    ]);
+
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *

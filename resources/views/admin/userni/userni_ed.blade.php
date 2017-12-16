@@ -137,13 +137,14 @@
                       <th>Age</th>
                       <th>Birthday</th>
                       <th>วันเวลา</th>
+                      <th>Status</th>
                       <th>จัดการ</th>
                     </tr>
                   </thead>
                   <tbody>
                     @if($objs)
                 @foreach($objs as $u)
-                    <tr>
+                    <tr id="{{$u->id}}">
 
                       <td>{{$u->chris}}</td>
                       <td>{{$u->emp_no}}</td>
@@ -153,6 +154,17 @@
                       <td>{{$u->age}}</td>
                       <td>{{$u->birthday}}</td>
                       <td>{{$u->updated_at}}</td>
+
+                      <td>
+                        <div class="switch switch-sm switch-success">
+                          <input type="checkbox" name="switch" data-plugin-ios-switch
+                          @if($u->ch_status == 1)
+                          checked="checked"
+                          @endif
+                          />
+                        </div>
+                      </td>
+
                       @if($u->status == 1)
                       <td>
 
@@ -455,6 +467,36 @@
 
 @section('scripts')
 
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("input:checkbox").change(function() {
+    var user_id = $(this).closest('tr').attr('id');
+
+    $.ajax({
+            type:'POST',
+            url:'{{url('api/post_status')}}',
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            data: { "user_id" : user_id },
+            success: function(data){
+              if(data.data.success){
+
+
+                PNotify.prototype.options.styling = "fontawesome";
+                new PNotify({
+                      title: 'ยินดีด้วยค่ะ',
+                      text: 'คุณได้ทำการเลือกข้อมูลสำเร็จแล้ว',
+                      type: 'success'
+                    });
+
+
+
+              }
+            }
+        });
+    });
+});
+</script>
 
 
 @if ($message = Session::get('add_success'))
