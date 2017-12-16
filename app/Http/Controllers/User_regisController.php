@@ -18,7 +18,7 @@ class User_regisController extends Controller
      */
     public function index()
     {
-      $objs = staff::paginate(15);
+      $objs = staff::paginate(18);
       $data['objs'] = $objs;
       $data['datahead'] = "Revised#1-Staff Name  List";
       return view('admin.userni.index', $data);
@@ -50,7 +50,7 @@ class User_regisController extends Controller
         $objs = DB::table('staff')
                 ->where('status', 1)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(15);
+                ->paginate(18);
 
       $data['objs'] = $objs;
       $data['datahead'] = "Revised#1-Staff Name  List";
