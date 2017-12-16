@@ -49,6 +49,7 @@ class User_regisController extends Controller
 
         $objs = DB::table('staff')
                 ->where('status', 1)
+                ->orderBy('updated_at', 'desc')
                 ->paginate(15);
 
       $data['objs'] = $objs;
