@@ -391,7 +391,7 @@
 
                      <div class="form-group" style="margin-bottom: 5px;">
                         <label for="inputPassword3" class=" control-label"><b>13. คุณมี Personality แบบไหน จากการทำแบบทดสอบ DISC? :</b><br>
-                          @if($u->q2 == 1)
+                          @if($u->q13 == 1)
                             D (Dominance)
                           @elseif($u->q13 == 2)
                             I (Influence)
@@ -399,7 +399,7 @@
                             S (Steadiness)ขอให้บอก ถ้าให้ lead
                             @elseif($u->q13 == 4)
                             C (Compliance)
-                            @elseif($u->q13 == 4)
+                            @elseif($u->q13 == 5)
                             ยังไม่เคยทำ
                           @else
 

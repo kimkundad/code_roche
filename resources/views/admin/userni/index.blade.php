@@ -95,7 +95,7 @@
                    <div class="col-md-4">
 
 <a class="btn btn-default" target="_blank" href="{{url('admin/user_export')}}" role="button"><i class="fa fa-file-excel-o"></i> Export Excel</a>
-                     
+
 
                    </div>
 
@@ -131,7 +131,7 @@
                       <th>CHRIS No.</th>
                       <th>Emp.No.</th>
                       <th>ชื่อ-นามสกุล</th>
-                      
+
                       <th>Position</th>
                       <th>Department</th>
                       <th>Age</th>
@@ -143,7 +143,7 @@
                     @if($objs)
                 @foreach($objs as $u)
                     <tr>
-                      
+
                       <td>{{$u->chris}}</td>
                       <td>{{$u->emp_no}}</td>
                       <td>{{$u->title}} {{$u->name}} {{$u->surname}}</td>
@@ -151,21 +151,21 @@
                       <td>{{$u->department}}</td>
                       <td>{{$u->age}}</td>
                       <td>{{$u->birthday}}</td>
-                      
-                   
+
+
                       <td>
 
                         @if($u->status)
                         <a style="float:left; margin: 3px; margin-top:2px; font-size: 16px; " class=" ap-questions-featured"
                           role="button"><i class="fa fa-star"></i></a>
-                        @endif  
+                        @endif
                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" class="btn btn-primary btn-xs modal-sizes"
                          href="#modalSM-{{$u->id}}" role="button"><i class="fa fa-graduation-cap"></i> </a>
 
                          @if($u->status)
                         <a style="float:left; margin: 3px; font-size: 10px; padding: 1px 3px;" target="_blank" class="btn btn-danger btn-xs"
                          href="{{url('/admin/load_img/'.$u->id)}}" role="button"><i class="fa fa-download"></i> </a>
-                        @endif  
+                        @endif
 
 
                       <!--    <form  action="{{url('admin/user_regis/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
@@ -174,7 +174,7 @@
                             <button type="submit" class="btn btn-danger btn-xs" style="margin: 3px; font-size: 10px;"><i class="fa fa-times "></i></button>
                           </form> -->
 
-                        
+
 
 
 
@@ -225,7 +225,7 @@
                           @elseif($u->q1 == 3)
                             งานที่มีความอิสระและยืดหยุ่น
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -239,7 +239,7 @@
                           @elseif($u->q2 == 3)
                             การทำงานทุกอย่างต้องใช้เทคโนโลยี
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -250,10 +250,10 @@
                             ความก้าวหน้าในการทำงานขึ้นอยู่กับองค์กร
                           @elseif($u->q3 == 2)
                             การทำงานช่วงแรกอาจต้องลองผิดลองถูกไปก่อน เพื่อค้นหาความก้าวหน้าที่แท้จริง
-                          @elseif($u->q3 == 3)  
+                          @elseif($u->q3 == 3)
                             ยุคนี้แล้วคงต้องลอง Startup ดิจิตอลเองแทนที่จะทำงานเพื่อคนอื่น
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -265,10 +265,10 @@
                             ดูโทรทัศน์
                           @elseif($u->q4 == 2)
                             ใช้คอมพิวเตอร์ในการค้นหาข้อมูล รับข่าวสาร
-                          @elseif($u->q4 == 3)  
+                          @elseif($u->q4 == 3)
                             อ่านจากแท็บเล็ทและโทรศัพท์มือถือ
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -279,10 +279,10 @@
                             พูดคุยทางโทรศัพท์
                           @elseif($u->q5 == 2)
                             ติดต่อทางอีเมล์หรือส่งข้อความ
-                          @elseif($u->q5 == 3)  
+                          @elseif($u->q5 == 3)
                             สื่อสารทางออนไลน์ เช่น Line / Facebook message
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -293,10 +293,10 @@
                             นั่งประชุมแลกเปลี่ยนความคิดเห็น
                           @elseif($u->q6 == 2)
                             ส่งข้อความโต้ตอบทางโทรศัพท์หรืออีเมล์
-                          @elseif($u->q6 == 3) 
+                          @elseif($u->q6 == 3)
                             ส่งข้อความพูดคุยโต้ตอบทางออนไลน์ เช่น Line/ Facebook message
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -309,10 +309,10 @@
                             ไปที่ธนาคาร พูดคุยแบบตัวต่อตัว
                           @elseif($u->q7 == 2)
                             หาข้อมูลทางออนไลน์ แล้วนัดพบเพื่อพูดคุย
-                          @elseif($u->q7 == 3) 
+                          @elseif($u->q7 == 3)
                             ใช้ Internet Banking
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -323,10 +323,10 @@
                             มุ่งมั่นทุ่มเทในขอบเขตที่ได้รับมอบหมายเพื่อการทำงานที่มีคุณภาพและประสิทธิภาพ
                           @elseif($u->q8 == 2)
                             ต้องการความชัดเจนในหน้าที่และความรับผิดชอบ รวมทั้งโครงสร้างและทิศทางขององค์กร
-                          @elseif($u->q8 == 3) 
+                          @elseif($u->q8 == 3)
                             การพยายามมองหาช่องทางที่หลากหลายรูปแบบในการทำงาน และมีความรู้สึกอยากมีธุรกิจของตัวเอง
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -338,10 +338,10 @@
                             เพียงได้รับการยอมรับ และชื่นชมจากองค์กร
                           @elseif($u->q9 == 2)
                             ต้องการอิสระในความคิด และการทำงาน
-                          @elseif($u->q9 == 3)   
+                          @elseif($u->q9 == 3)
                             ต้องการงานที่มีคุณค่า และมีความหมายต่อตนเอง
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -353,10 +353,10 @@
                             คุณคือคนที่มีคุณค่า เราต้องการคุณ
                           @elseif($u->q10 == 2)
                             คุณทำได้ดีอยู่แล้ว ฉันเชื่อมั่นในตัวคุณ
-                          @elseif($u->q10 == 3) 
+                          @elseif($u->q10 == 3)
                             งานคุณ “เจ๋งมาก” ดีใจที่ได้ร่วมงานด้วย
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -370,7 +370,7 @@
                           @elseif($u->q11 == 3)
                             สามารถเติมเต็มความสำเร็จให้กับทีมงาน
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -384,7 +384,7 @@
                           @elseif($u->q12 == 3)
                             งานที่ใช่ คืองานที่ชอบ
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -392,7 +392,7 @@
 
                      <div class="form-group" style="margin-bottom: 5px;">
                         <label for="inputPassword3" class=" control-label"><b>13. คุณมี Personality แบบไหน จากการทำแบบทดสอบ DISC? :</b><br>
-                          @if($u->q2 == 1)
+                          @if($u->q13 == 1)
                             D (Dominance)
                           @elseif($u->q13 == 2)
                             I (Influence)
@@ -400,10 +400,10 @@
                             S (Steadiness)ขอให้บอก ถ้าให้ lead
                             @elseif($u->q13 == 4)
                             C (Compliance)
-                            @elseif($u->q13 == 4)
+                            @elseif($u->q13 == 5)
                             ยังไม่เคยทำ
                           @else
-                            
+
                           @endif
                           </label>
                      </div>
@@ -440,7 +440,7 @@
 
 
 
-            
+
 
 
 
@@ -448,7 +448,7 @@
 
                       </td>
 
-                  
+
 
 
 
