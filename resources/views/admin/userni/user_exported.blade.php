@@ -213,7 +213,7 @@ echo '<tr>
                           @endif
 			</td>
 			<td>
-				 @if($u->q2 == 1)
+				 @if($u->q13 == 1)
                             D (Dominance)
                           @elseif($u->q13 == 2)
                             I (Influence)
