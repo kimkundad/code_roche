@@ -217,7 +217,7 @@ echo '<tr>
 				@elseif($u->q13 == 2)
 				I (Influence)
 				@elseif($u->q13 == 3)
-				S (Steadiness)ขอให้บอก ถ้าให้ lead
+				S (Steadiness)
 				@elseif($u->q13 == 4)
 				C (Compliance)
 				@elseif($u->q13 == 5)
